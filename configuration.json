@@ -1,0 +1,53 @@
+{
+    "images": [
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_19i1877_copy.jpg",
+            "alt" : "Model on runway during show wearing long-sleeved dark green long dress with vertical details"
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_19i1847_copy.jpg",
+            "alt" : "Models wears blue skirt and white top on runway"
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_19i1947_copy.jpg",
+            "alt" : "Model wears shiny red skirt with red long-sleeved top with sliver stripe details"
+        },
+        {
+            "url" : "https://design.umn.edu/sites/design.umn.edu/files/2020-09/crystalcompton7700.jpg",
+            "alt" : "Crystal Compton Align Fashion Show dress"
+        },
+        {
+            "url" : "https://design.umn.edu/sites/design.umn.edu/files/2020-09/jessamanthe7511.jpg",
+            "alt" : "Jessa Manthe Align Apparel Design Fashion Show Coat"
+        },
+        {
+            "url" : "https://design.umn.edu/sites/design.umn.edu/files/2020-09/lauraschaefer7665.jpg",
+            "alt" : "Laura Schaefer Align Apparel Design Fashion Show Dress"
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_19i1164.jpg",
+            "alt" : "Models walks the runway in one of Kai Johnson's designs"
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/kaidesign4.jpg",
+            "alt" : "Model shows off one of Kai Johnson's designs in pre-show photo shoot"
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_6.jpg",
+            "alt" : ""
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_5.jpg",
+            "alt" : ""
+        },
+        {
+            "url" : "https://twin-cities.umn.edu/sites/twin-cities.umn.edu/files/fashion_4.jpg",
+            "alt" : ""
+        },
+        {
+            "url" : "https://www.aceshowbiz.com/display/images/photo/2022/07/05/00188465.jpg",
+            "alt" : "Darren Hayes with flamingos"
+        }
+    ],
+    "prompt": "Add words that describe the image below."
+}
