@@ -1,0 +1,17 @@
+{
+    "images": [
+        {
+            "url" : "https://www.pd.co.ke/wp-content/uploads/2020/03/Wife-material-1200x750.gif",
+            "alt" : "wife material"
+        },
+        {
+            "url" : "https://i.redd.it/0f2y2kmsv1f31.jpg",
+            "alt" : "Ppl of walmart"
+        },
+        {
+            "url" : "https://www.aceshowbiz.com/display/images/photo/2022/07/05/00188465.jpg",
+            "alt" : "Darren Hayes with flamingos"
+        }
+    ],
+    "prompt": "Hiya! Add words that describe the image below."
+}

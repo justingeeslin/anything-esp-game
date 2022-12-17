@@ -1,19 +1,25 @@
 <?php
 // Wow, this feels awesome. I haven't done a pure PHP project is a loong time. Where's my Product Key for Windows XP Professional Edition? 
 
-$images = array(
-    // "wife material"
-    'https://www.pd.co.ke/wp-content/uploads/2020/03/Wife-material-1200x750.gif',
-    // Ppl of walmart
-    'https://i.redd.it/0f2y2kmsv1f31.jpg',
-    // Darren hayes
-    'https://www.aceshowbiz.com/display/images/photo/2022/07/05/00188465.jpg',
-);
+$configuration = json_decode(file_get_contents('configuration.json'));
+// var_export($configuration);
 
-$prompt = "Add words that describe the image below.";
+$images = $configuration->images;
+// var_export($images);
+
+$defaultPrompt = "Add words that describe the image below.";
+
+if (isset($configuration->prompt)) {
+    $prompt = $configuration->prompt;
+}
+else {
+    $prompt = $defaultPrompt;
+}
 
 // Pick a random image
-$image = array_rand(array_flip($images));
+$imageRandomIndex = array_rand($images);
+$image = $images[$imageRandomIndex];
+// var_export($image);
 
 ?>
 <html>
@@ -30,9 +36,9 @@ $image = array_rand(array_flip($images));
     </head>
     <body>
         <h1 id="prompt"><?php echo $prompt ?></h1>
-        <img src="<?php echo $image ?>" alt="You tell me">
+        <img src="<?php echo $image->url ?>" alt="<?php echo $image->alt ?>">
         <form method="POST" action="save.php">
-            <input type="hidden" name="image" value="<?php echo $image ?>">
+            <input type="hidden" name="image" value="<?php echo $image->url ?>">
             <input type="text" name="words" placeholder="">
             <br>
             <input type="submit">
