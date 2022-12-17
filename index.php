@@ -19,6 +19,9 @@ $image = array_rand(array_flip($images));
 <html>
     <head>
         <style>
+            body {
+                text-align:center;
+            }
             img {
                 max-width:75vw;
                 max-height:75vh;
@@ -30,7 +33,8 @@ $image = array_rand(array_flip($images));
         <img src="<?php echo $image ?>" alt="You tell me">
         <form method="POST" action="save.php">
             <input type="hidden" name="image" value="<?php echo $image ?>">
-            <input type="text" name="words" placeholder="Words">
+            <input type="text" name="words" placeholder="">
+            <br>
             <input type="submit">
         </form>
     </body>

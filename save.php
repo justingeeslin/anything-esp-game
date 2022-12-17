@@ -30,21 +30,25 @@ foreach ($csv as $entry) {
 // Wrangle the image's words keeping only a unique list
 $imagesWordsAndCounts = array_count_values(explode(",", $wordsStr));
 $imagesWords = array_keys($imagesWordsAndCounts);
-echo "<h3>Image's words:</h3>";
-var_export($imagesWords);
+// echo "<h3>Image's words:</h3>";
+// var_export($imagesWords);
 
 // Count the user-submitted words matches. 
 $userWords = explode(",", $_POST["words"]);
 $userWords = array_unique($userWords);
-echo "<h3>User words:</h3>";
-var_export($userWords);
+// echo "<h3>User words:</h3>";
+// var_export($userWords);
 $matchedWords = array_intersect($imagesWords, $userWords);
-echo "<h3>Matched words:</h3>";
-var_export($matchedWords);
+
 $numberOfMatches = count($matchedWords);
 if ($numberOfMatches > 0) {
     echo "<h1>Great!</h1>";
     echo "<p>You found " . $numberOfMatches . " matches!</p>";
+
+    echo "<h3>Matched words:</h3>";
+    var_export($matchedWords);
+    echo "<br>";
+
     echo '<a href="' . $GLOBALS['formURL'] . '">Keep going!</a>';
 }
 else {
