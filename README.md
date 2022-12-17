@@ -36,5 +36,5 @@ http://0.0.0.0:4444/?config=https://justin.geesl.in/config-alternate.json
 
 The results will appear in a CSV file on the server whose name cooresponds to the `config` URL, like so:
 ```
-http://0.0.0.0:4444/justin-geesl-in_config_alternate-json.csv
+http://0.0.0.0:4444/justin-geesl-in_config_alternate-json-RESULTS.csv
 ```
