@@ -20,11 +20,10 @@ function stringifyURL($string) {
     $string = str_replace('/', '_', $string);
     return $string;
 }
-echo stringifyURL("https://justin.geesl.in/config-alternate.json");
 
 
 if (isset($_POST["config"])) {
-    $GLOBALS['resultsFile'] = stringifyURL($_POST["config"]) . ".csv";
+    $GLOBALS['resultsFile'] = stringifyURL($_POST["config"]) . "-RESULTS.csv";
     // Create the results file
     $f = fopen($GLOBALS['resultsFile'], 'a');
     fclose($f);
@@ -79,7 +78,7 @@ else {
 }
 echo '<hr>';
 function recordResults() {
-    echo "Recording results… ";    
+    echo "Recording results… "; 
     $myfile = fopen($GLOBALS['resultsFile'], "a") or die("Unable to open file!");
     $data = '"' . $_POST["image"] . '", "' . $_POST["words"] . "\"\n";
     fwrite($myfile, $data);
