@@ -10,6 +10,8 @@ $images = array(
     'https://www.aceshowbiz.com/display/images/photo/2022/07/05/00188465.jpg',
 );
 
+$prompt = "Add words that describe the image below.";
+
 // Pick a random image
 $image = array_rand(array_flip($images));
 
@@ -24,6 +26,7 @@ $image = array_rand(array_flip($images));
         </style>
     </head>
     <body>
+        <h1 id="prompt"><?php echo $prompt ?></h1>
         <img src="<?php echo $image ?>" alt="You tell me">
         <form method="POST" action="save.php">
             <input type="hidden" name="image" value="<?php echo $image ?>">
