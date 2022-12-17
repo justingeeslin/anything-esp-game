@@ -1,7 +1,16 @@
 <?php
 // Wow, this feels awesome. I haven't done a pure PHP project is a loong time. Where's my Product Key for Windows XP Professional Edition? 
 
-$configuration = json_decode(file_get_contents('configuration.json'));
+$_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+// 
+$configURL = 'configuration.json';
+if (isset($_GET["config"])) {
+    $configURL = $_GET["config"];
+}
+
+
+$configuration = json_decode(file_get_contents($configURL));
 // var_export($configuration);
 
 $images = $configuration->images;
@@ -39,6 +48,7 @@ $image = $images[$imageRandomIndex];
         <img src="<?php echo $image->url ?>" alt="<?php echo $image->alt ?>">
         <form method="POST" action="save.php">
             <input type="hidden" name="image" value="<?php echo $image->url ?>">
+            <input type="hidden" name="config" value="<?php echo $configURL ?>">
             <input type="text" name="words" placeholder="">
             <br>
             <input type="submit">
