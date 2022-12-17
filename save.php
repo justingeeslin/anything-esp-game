@@ -8,6 +8,28 @@ $GLOBALS['formURL'] = "/index.php";
 $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 // var_export($_POST);
 
+// Custom results file
+function stringifyURL($string) {
+    setlocale(LC_CTYPE, 'en_US.UTF8');
+    $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
+    $string = str_replace(' ', '-', $string);
+    // Remove the protocol
+    $string = str_replace('https://', '', $string);
+    $string = str_replace('http://', '', $string);
+    $string = str_replace('.', '-', $string);
+    $string = str_replace('/', '_', $string);
+    return $string;
+}
+echo stringifyURL("https://justin.geesl.in/config-alternate.json");
+
+
+if (isset($_POST["config"])) {
+    $GLOBALS['resultsFile'] = stringifyURL($_POST["config"]) . ".csv";
+    // Create the results file
+    $f = fopen($GLOBALS['resultsFile'], 'a');
+    fclose($f);
+}
+
 //Determine whether their are any matches
 // Get all the words for a particular image. 
 // Read the CSV
