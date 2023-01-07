@@ -1,6 +1,6 @@
 <?php
 // Wow, this feels awesome. I haven't done a pure PHP project is a loong time. Where's my Product Key for Windows XP Professional Edition? 
-
+session_start();
 $GLOBALS['resultsFile'] = "results.csv";
 $GLOBALS['formURL'] = "/index.php";
 
@@ -21,9 +21,15 @@ function stringifyURL($string) {
     return $string;
 }
 
+if (isset($_SESSION['userid'])) {
+    $userid = $_SESSION['userid'];
+}
+else {
+    $userid = 0;
+}
 
 if (isset($_POST["config"])) {
-    $GLOBALS['resultsFile'] = stringifyURL($_POST["config"]) . "-RESULTS.csv";
+    $GLOBALS['resultsFile'] = stringifyURL($_POST["config"]) . "-" . $userid . "-RESULTS.csv";
     // Create the results file
     $f = fopen($GLOBALS['resultsFile'], 'a');
     fclose($f);

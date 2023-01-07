@@ -1,6 +1,6 @@
 <?php
 // Wow, this feels awesome. I haven't done a pure PHP project is a loong time. Where's my Product Key for Windows XP Professional Edition? 
-
+session_start();
 $_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 // 
@@ -29,6 +29,10 @@ else {
 $imageRandomIndex = array_rand($images);
 $image = $images[$imageRandomIndex];
 // var_export($image);
+
+if (!isset($_SESSION['userid'])) {
+    $_SESSION['userid'] = uniqid("user", true);
+}
 
 ?>
 <html>
