@@ -36,9 +36,10 @@ if (isset($_POST["config"])) {
 }
 
 //Determine whether their are any matches
-// Get all the words for a particular image. 
+// Get all the words for a particular image from the matched user
+$GLOBALS['matchedUserResultsFile'] = stringifyURL($_POST["config"]) . "-user" . $_POST["matchedUser"] . "-RESULTS.csv";
 // Read the CSV
-$csv = array_map( 'str_getcsv', file( $GLOBALS['resultsFile'] ) );
+$csv = array_map( 'str_getcsv', file( $GLOBALS['matchedUserResultsFile'] ) );
 // var_export($csv);
 
 // Keep a running tally of all this image's words

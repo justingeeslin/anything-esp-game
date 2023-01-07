@@ -34,6 +34,25 @@ if (!isset($_SESSION['userid'])) {
     $_SESSION['userid'] = uniqid("user", true);
 }
 
+// Select a random user to match with
+$dir = new DirectoryIterator(dirname(__FILE__));
+$users = array();
+
+function isResultsFile($fileinfo) {
+    $filename = $fileinfo->getFilename();
+    return !$fileinfo->isDot() && strpos($filename, '-RESULTS.csv') !== FALSE;
+}
+
+foreach ($dir as $fileinfo) {
+    if (isResultsFile($fileinfo)) {
+        $users[] = substr($fileinfo->getFilename(), 23,-12);
+    }
+}
+$matchedUser = $users[rand(0,count($users)-1)];
+
+print("Matched user:");
+echo $matchedUser;
+
 ?>
 <html>
     <head>
@@ -51,6 +70,7 @@ if (!isset($_SESSION['userid'])) {
         <h1 id="prompt"><?php echo $prompt ?></h1>
         <img src="<?php echo $image->url ?>" alt="<?php echo $image->alt ?>">
         <form method="POST" action="save.php">
+            <input type="hidden" name="matchedUser" value="<?php echo $matchedUser ?>">
             <input type="hidden" name="image" value="<?php echo $image->url ?>">
             <input type="hidden" name="config" value="<?php echo $configURL ?>">
             <input type="text" name="words" placeholder="">
