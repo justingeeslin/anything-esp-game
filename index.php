@@ -3,6 +3,8 @@
 session_start();
 $_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+require_once('common.php');
+
 // 
 $configURL = 'configuration.json';
 if (isset($_GET["config"])) {
@@ -39,19 +41,34 @@ $dir = new DirectoryIterator(dirname(__FILE__));
 $users = array();
 
 function isResultsFile($fileinfo) {
+    global $configURL;
     $filename = $fileinfo->getFilename();
-    return !$fileinfo->isDot() && strpos($filename, '-RESULTS.csv') !== FALSE;
+    return !$fileinfo->isDot() && strpos($filename, stringifyURL($configURL)) !== FALSE && strpos($fileinfo->getFilename(), '-RESULTS.csv') !== FALSE;
 }
 
 foreach ($dir as $fileinfo) {
     if (isResultsFile($fileinfo)) {
-        $users[] = substr($fileinfo->getFilename(), 23,-12);
+        // echo $fileinfo->getFilename();
+        $indexStart = strpos($fileinfo->getFilename(), '-user') + strlen('-user');
+        $indexEnd = strpos($fileinfo->getFilename(), '-RESULTS.csv');
+
+        $users[] = substr($fileinfo->getFilename(), $indexStart, $indexEnd-$indexStart);
     }
 }
-$matchedUser = $users[rand(0,count($users)-1)];
+// print_r($users);
 
-print("Matched user:");
-echo $matchedUser;
+// If there are users, make a match
+if (count($users) > 0) {
+    $matchedUser = $users[rand(0,count($users)-1)];
+    print("Matched user:");
+    echo $matchedUser;
+}
+else {
+    // Think this through.
+    $matchedUser = explode('-user', $_SESSION['userid'])[1];
+}
+
+
 
 ?>
 <html>
