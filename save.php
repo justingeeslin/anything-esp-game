@@ -58,25 +58,17 @@ foreach ($csv as $entry) {
 // Wrangle the image's words keeping only a unique list
 $imagesWordsAndCounts = array_count_values(explode(",", $wordsStr));
 $imagesWords = array_keys($imagesWordsAndCounts);
-// echo "<h3>Image's words:</h3>";
-// var_export($imagesWords);
 
 // Count the user-submitted words matches. 
 $userWords = explode(",", $_POST["words"]);
 $userWords = array_unique($userWords);
-// echo "<h3>User words:</h3>";
-// var_export($userWords);
+
 $matchedWords = array_intersect($imagesWords, $userWords);
 
 $numberOfMatches = count($matchedWords);
 if ($numberOfMatches > 0) {
     echo "<h1>Great!</h1>";
     echo "<p>You found " . $numberOfMatches . " matches!</p>";
-
-    echo "<h3>Matched words:</h3>";
-    var_export($matchedWords);
-    echo "<br>";
-
     echo '<a href="' . $GLOBALS['formURL'] . '">Keep going!</a>';
 }
 else {
@@ -84,12 +76,25 @@ else {
     echo '<a href="' . $GLOBALS['formURL'] . '">Try again</a>';
 }
 echo '<hr>';
+
+echo "<details open>";
+echo "<h3>Matched words:</h3>";
+var_export($matchedWords);
+echo "<hr>";
+echo "<h3>" . $_POST['matchedUser'] . "'s words:</h3>";
+var_export($imagesWords);
+echo "<hr>";
+echo "<h3>Your words:</h3>";
+var_export($userWords);
+
+echo "</details>";
+
 function recordResults() {
-    echo "Recording results… "; 
+    // echo "Recording results… "; 
     $myfile = fopen($GLOBALS['resultsFile'], "a") or die("Unable to open file!");
     $data = '"' . $_POST["image"] . '", "' . $_POST["words"] . "\"\n";
     fwrite($myfile, $data);
-    echo "Done!";
+    // echo "Done!";
     fclose($myfile);
 }
 
