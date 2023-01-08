@@ -5,13 +5,6 @@ $_GET  = filter_input_array(INPUT_GET, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 require_once('common.php');
 
-// 
-$configURL = 'configuration.json';
-if (isset($_GET["config"])) {
-    $configURL = $_GET["config"];
-}
-
-
 $configuration = json_decode(file_get_contents($configURL));
 // var_export($configuration);
 
@@ -39,12 +32,6 @@ if (!isset($_SESSION['userid'])) {
 // Select a random user to match with
 $dir = new DirectoryIterator(dirname(__FILE__));
 $users = array();
-
-function isResultsFile($fileinfo) {
-    global $configURL;
-    $filename = $fileinfo->getFilename();
-    return !$fileinfo->isDot() && strpos($filename, stringifyURL($configURL)) !== FALSE && strpos($fileinfo->getFilename(), '-RESULTS.csv') !== FALSE;
-}
 
 foreach ($dir as $fileinfo) {
     if (isResultsFile($fileinfo)) {
