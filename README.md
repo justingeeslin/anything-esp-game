@@ -27,6 +27,20 @@ The images and the prompt can be customized.
 }
 ```
 
+### Viewing Results
+
+### Results Tag Cloud
+Navigate to `tagcloud.php`. This will show a webpage of all the things and a tag cloud of all their words.
+```
+http://0.0.0.0:4444/tagcloud.php
+```
+
+### CSV Export
+Navigate to `results.php`. This will download a CSV of all the things, their words, and how many times they were input by players.
+```
+http://0.0.0.0:4444/results.php
+```
+
 ### Custom Configuration
 A custom configuration can be used by adding a `config` variable to the URL, like so:
 
