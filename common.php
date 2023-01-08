@@ -10,4 +10,11 @@ function stringifyURL($string) {
     $string = str_replace('/', '_', $string);
     return $string;
 }
+
+function isResultsFile($fileinfo) {
+    global $configURL;
+    $filename = $fileinfo->getFilename();
+    return !$fileinfo->isDot() && strpos($filename, stringifyURL($configURL)) !== FALSE && strpos($fileinfo->getFilename(), '-RESULTS.csv') !== FALSE;
+}
+
 ?>

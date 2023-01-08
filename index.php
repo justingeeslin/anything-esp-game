@@ -40,12 +40,6 @@ if (!isset($_SESSION['userid'])) {
 $dir = new DirectoryIterator(dirname(__FILE__));
 $users = array();
 
-function isResultsFile($fileinfo) {
-    global $configURL;
-    $filename = $fileinfo->getFilename();
-    return !$fileinfo->isDot() && strpos($filename, stringifyURL($configURL)) !== FALSE && strpos($fileinfo->getFilename(), '-RESULTS.csv') !== FALSE;
-}
-
 foreach ($dir as $fileinfo) {
     if (isResultsFile($fileinfo)) {
         // echo $fileinfo->getFilename();
