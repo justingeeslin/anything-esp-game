@@ -27,6 +27,12 @@ The images and the prompt can be customized.
 }
 ```
 
+### Viewing Results
+On your server navigate to `results.php`. This will download a CSV of all the things, their words, and how many times they were input by players.
+```
+http://0.0.0.0:4444/results.php
+```
+
 ### Custom Configuration
 A custom configuration can be used by adding a `config` variable to the URL, like so:
 
